@@ -150,7 +150,7 @@ void Display() {
 	glDrawElements(GL_TRIANGLES, sizeof(faces)/sizeof(int), GL_UNSIGNED_INT, &faces[0]);
 
 	//Reset buffer
-    glFlush();
+	glFlush();
 }
 
 void update() {
@@ -235,26 +235,26 @@ void initBuffers() {
 // APPLICATION CODE
 
 int main() {
-  glfwSetErrorCallback(ErrorGFLW);
-  if (!glfwInit())
-      return 1;
-  GLFWwindow *window = glfwCreateWindow(800, 800, "Faceted Shading", NULL, NULL);
-  if (!window) {
-      glfwTerminate();
-      return 1;
-  }
-  glfwMakeContextCurrent(window);
-  gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-  printf("GL version: %s\n", glGetString(GL_VERSION));
-  PrintGLErrors();
+  	glfwSetErrorCallback(ErrorGFLW);
+  	if (!glfwInit())
+      		return 1;
+  	GLFWwindow *window = glfwCreateWindow(800, 800, "Faceted Shading", NULL, NULL);
+  	if (!window) {
+      		glfwTerminate();
+      		return 1;
+  	}
+	glfwMakeContextCurrent(window);
+	gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+	printf("GL version: %s\n", glGetString(GL_VERSION));
+	PrintGLErrors();
 	if (!(program = LinkProgramViaCode(&vertexPhongShader, &pixelPhongShader)))
 		return 0;
 	
-  InitVertexBuffer();
+ 	 InitVertexBuffer();
 
 	//Register events for polling
 	//Passing in functions
-  glfwSetKeyCallback(window, Keyboard);//Keys
+  	glfwSetKeyCallback(window, Keyboard);//Keys
 	glfwSetMouseButtonCallback(window, MouseButton);//Clicks 
 	glfwSetCursorPosCallback(window, MouseMove);//Moves
 	glfwSetScrollCallback(window, MouseScroll);//Scroll
@@ -263,7 +263,7 @@ int main() {
 	//One buffer to render, one to display 
 	//Setting number of frames between swaps
 	//Expensive without - Why render 400fps on 60fps monitor?
-  glfwSwapInterval(1);
+  	glfwSwapInterval(1);
 
 	while (!glfwWindowShouldClose(window)) {
 		//Store window size before each frame is displayed
@@ -277,8 +277,8 @@ int main() {
 
 	//Cleanup
 	Close();
-  glfwDestroyWindow(window);
-  glfwTerminate();
+	glfwDestroyWindow(window);
+	glfwTerminate();
 }
 
 //New keyboard code for adjusting stretch and field of view
